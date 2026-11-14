@@ -9,6 +9,7 @@ import { getDictionary } from "@/content/translations";
 import { RevealController } from "@/components/home/RevealController";
 import { CountUp } from "@/components/home/Motion";
 import { JourneyMap } from "@/components/home/JourneyMap";
+import { assetPath } from "@/lib/asset";
 
 // Homepage V6 — "Dark Technical" (docs/DESIGN_PROMPT_V6.md).
 // Photo + identity, four figures, the Gaza ↔ Johor map, three papers, contact.
@@ -141,7 +142,7 @@ export default async function HomePage({ params }: HomePageProps) {
             <div className="tech-frame">
               <div className="relative aspect-[4/5] overflow-hidden border border-ink/15 bg-vellum-deep">
                 <Image
-                  src={profileData.photo ?? "/portrait/alaa-abuzaiter.jpg"}
+                  src={assetPath(profileData.photo ?? "/portrait/alaa-abuzaiter.jpg")}
                   alt={profileData.photoAlt?.[locale] ?? L("Portrait of Dr. Eng. Alaa A. AbuZaiter", "صورة د.م. علاء أبو زعيتر")}
                   fill
                   priority

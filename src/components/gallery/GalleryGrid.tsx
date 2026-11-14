@@ -2,6 +2,7 @@
 
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
+import { assetPath } from "@/lib/asset";
 import { GalleryCategory, GalleryPhoto, Locale } from "@/content/types";
 import { galleryCategories } from "@/content/gallery";
 
@@ -106,7 +107,7 @@ export function GalleryGrid({ photos, locale }: GalleryGridProps) {
                 aria-label={L(`Open photo ${frameNo.get(p.id)}: ${p.alt.en}`, `فتح الصورة ${frameNo.get(p.id)}: ${p.alt.ar}`)}
               >
                 <Image
-                  src={p.src}
+                  src={assetPath(p.src)}
                   alt={p.alt[locale]}
                   fill
                   sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
@@ -163,7 +164,7 @@ export function GalleryGrid({ photos, locale }: GalleryGridProps) {
           </div>
 
           <div className="relative flex-1 mx-4 sm:mx-20">
-            <Image src={current.src} alt={current.alt[locale]} fill sizes="100vw" className="object-contain" priority />
+            <Image src={assetPath(current.src)} alt={current.alt[locale]} fill sizes="100vw" className="object-contain" priority />
           </div>
 
           {shown.length > 1 && (

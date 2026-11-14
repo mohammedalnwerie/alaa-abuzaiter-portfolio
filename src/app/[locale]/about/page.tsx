@@ -9,6 +9,7 @@ import { leadershipRoles } from "@/content/leadership";
 import { educationData } from "@/content/academic-journey";
 import { getDictionary } from "@/content/translations";
 import { RevealController } from "@/components/home/RevealController";
+import { assetPath } from "@/lib/asset";
 import type { Metadata } from "next";
 
 // V6 "Dark Technical" — about (docs/DESIGN_PROMPT_V6.md).
@@ -81,7 +82,7 @@ export default async function AboutPage({ params }: AboutPageProps) {
               <div className="tech-frame">
                 <div className="relative aspect-[4/5] overflow-hidden border border-ink/15 bg-vellum-deep">
                   <Image
-                    src={profileData.photo}
+                    src={assetPath(profileData.photo)}
                     alt={(profileData.photoAlt ?? profileData.name)[locale]}
                     fill
                     priority
