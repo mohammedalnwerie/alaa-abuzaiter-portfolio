@@ -1,0 +1,90 @@
+import React from "react";
+import { Locale } from "@/content/types";
+import { profileData } from "@/content/profile";
+import { Building2, GraduationCap, ShieldCheck } from "lucide-react";
+
+interface AcademicPersonaFrameProps {
+  locale: Locale;
+  variant?: "hero" | "sidebar" | "compact";
+}
+
+export function AcademicPersonaFrame({ locale, variant = "hero" }: AcademicPersonaFrameProps) {
+  const isRtl = locale === "ar";
+
+  return (
+    <div className="relative w-full max-w-sm mx-auto select-none">
+      {/* Outer Fine Reticle Frame */}
+      <div className="relative bg-white border border-[#14243A]/15 rounded-lg p-5 sm:p-6 shadow-sm space-y-4">
+        
+        {/* Top Reticle Status Bar */}
+        <div className="flex items-center justify-between text-[11px] font-mono text-slate-muted border-b border-[#14243A]/10 pb-3">
+          <div className="flex items-center gap-1.5 font-semibold text-navy-800">
+            <span className="w-1.5 h-1.5 rounded-full bg-teal-accent" />
+            <span>{locale === "ar" ? "الهوية الأكاديمية الرسمية" : "OFFICIAL ACADEMIC PROFILE"}</span>
+          </div>
+          <span className="text-[10px] bg-offwhite-200 px-2 py-0.5 rounded text-charcoal-700">
+            {locale === "ar" ? "معتمد" : "VERIFIED"}
+          </span>
+        </div>
+
+        {/* Central Authoritative Portrait Frame / Monogram Seal */}
+        <div className="aspect-[4/5] rounded bg-gradient-to-b from-offwhite-200 via-offwhite-100 to-offwhite-200 border border-[#14243A]/10 flex flex-col items-center justify-center p-6 text-center relative overflow-hidden group">
+          
+          {/* Subtle Hairline Coordinate Backdrop */}
+          <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(to_right,#14243A_1px,transparent_1px),linear-gradient(to_bottom,#14243A_1px,transparent_1px)] bg-[size:16px_16px]" />
+
+          {/* Academic Crest Medallion */}
+          <div className="relative z-10 w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-navy-800 text-white flex flex-col items-center justify-center shadow-md border-2 border-teal-accent/40 mb-4 transition-transform duration-300 group-hover:scale-105">
+            <span className="text-2xl sm:text-3xl font-serif font-bold tracking-tight text-offwhite-100">
+              {locale === "ar" ? "د.ع" : "AA"}
+            </span>
+            <span className="text-[9px] font-mono tracking-widest text-teal-accent mt-0.5 uppercase">
+              {locale === "ar" ? "أستاذ مساعد" : "Asst. Prof."}
+            </span>
+          </div>
+
+          {/* Academic Person Credentials */}
+          <div className="space-y-1 relative z-10">
+            <h2 className="text-sm sm:text-base font-bold text-navy-800 leading-snug">
+              {profileData.fullNameFormal[locale]}
+            </h2>
+            <p className="text-xs text-teal-hover font-semibold">
+              {profileData.administrativeRole[locale]}
+            </p>
+            <p className="text-[11px] text-slate-muted pt-1">
+              {profileData.affiliationUniversity[locale]}
+            </p>
+          </div>
+
+          {/* Photo Preparation Disclaimer */}
+          <div className="absolute bottom-2 inset-x-3 text-[10px] text-slate-muted bg-white/80 backdrop-blur-sm py-1 px-2 rounded border border-[#14243A]/10">
+            {locale === "ar"
+              ? "الصورة الرسمية المعتمدة قيد التجهيز بالجودة الفائقة"
+              : "Official portrait in preparation for digital indexing"}
+          </div>
+        </div>
+
+        {/* Lower Verified Institutional Credentials */}
+        <div className="pt-2 border-t border-[#14243A]/10 space-y-1.5 text-xs text-slate-muted">
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-[11px] font-semibold text-navy-800 flex items-center gap-1.5">
+              <Building2 className="w-3.5 h-3.5 text-teal-accent" />
+              <span>{profileData.affiliationFaculty[locale]}</span>
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-[11px] font-mono">
+            <span>{locale === "ar" ? "المقر الأكاديمي:" : "CAMPUS:"}</span>
+            <span className="text-charcoal-700 font-medium">Gaza, Palestine</span>
+          </div>
+        </div>
+
+        {/* Precision Corner Reticle Ticks */}
+        <div className="absolute top-1.5 left-1.5 w-2 h-2 border-t border-l border-[#14243A]/30 pointer-events-none" />
+        <div className="absolute top-1.5 right-1.5 w-2 h-2 border-t border-r border-[#14243A]/30 pointer-events-none" />
+        <div className="absolute bottom-1.5 left-1.5 w-2 h-2 border-b border-l border-[#14243A]/30 pointer-events-none" />
+        <div className="absolute bottom-1.5 right-1.5 w-2 h-2 border-b border-r border-[#14243A]/30 pointer-events-none" />
+
+      </div>
+    </div>
+  );
+}
